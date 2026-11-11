@@ -1,9 +1,8 @@
-﻿import './App.scss';
-import { useRef } from 'react';
+﻿import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-function App() {
+export function HomePage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -24,5 +23,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
