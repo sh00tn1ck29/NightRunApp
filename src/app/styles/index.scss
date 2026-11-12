@@ -4,5 +4,23 @@
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-primary);
+}
+
+:root {
+  --font-primary: 'Barlow Condensed', 'Noto Sans JP', sans-serif;
+  --font-technical: 'IBM Plex Mono', 'Noto Sans JP', monospace;
+  --font-japanese: 'Noto Sans JP', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+:lang(ja) {
+  font-family: var(--font-japanese);
 }
