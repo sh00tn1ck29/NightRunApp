@@ -28,7 +28,7 @@ export function HomePage() {
           tabIndex={-1}
         >
           <source
-            src={`${import.meta.env.BASE_URL}videos/touge.mp4`}
+            src={`${import.meta.env.BASE_URL}videos/touge-scroll.mp4`}
             type="video/mp4"
           />
         </video>

@@ -28,8 +28,12 @@ export function useHomeAnimations({
       const rpmElement = intro.querySelector<HTMLElement>('[data-rpm]');
       const speedBars = intro.querySelectorAll<HTMLElement>('[data-speed-bar]');
       const rpmNeedle = intro.querySelector<HTMLElement>('[data-rpm-needle]');
-      const scrollLine = intro.querySelector<HTMLElement>('.headline__scroll-line');
-      const origin = intro.closest('.home-page')?.querySelector<HTMLElement>('.origin');
+      const scrollLine = intro.querySelector<HTMLElement>(
+        '.headline__scroll-line',
+      );
+      const origin = intro
+        .closest('.home-page')
+        ?.querySelector<HTMLElement>('.origin');
       const driftDuration = 11;
       const entrance = gsap.matchMedia();
 
@@ -54,17 +58,19 @@ export function useHomeAnimations({
 
         if (origin) {
           // Select text only: neither photo nor its figure is transformed.
-          const revealElements = origin.querySelectorAll<HTMLElement>([
-            '.origin__section-label',
-            '.origin__eyebrow',
-            '.origin__title > span',
-            '.origin__lead',
-            '.origin__description',
-            '.origin__coordinates',
-            '.origin__landscape figcaption',
-            '.origin__margin-note',
-            '.origin__ribbon-track',
-          ].join(', '));
+          const revealElements = origin.querySelectorAll<HTMLElement>(
+            [
+              '.origin__section-label',
+              '.origin__eyebrow',
+              '.origin__title > span',
+              '.origin__lead',
+              '.origin__description',
+              '.origin__coordinates',
+              '.origin__landscape figcaption',
+              '.origin__margin-note',
+              '.origin__ribbon-track',
+            ].join(', '),
+          );
 
           revealElements.forEach((element) => {
             gsap.from(element, {
@@ -133,7 +139,8 @@ export function useHomeAnimations({
           if (!origin) return;
 
           const cleanups: Array<() => void> = [];
-          const photoWrappers = origin.querySelectorAll<HTMLElement>('[data-origin-tilt]');
+          const photoWrappers =
+            origin.querySelectorAll<HTMLElement>('[data-origin-tilt]');
           const maxTilt = 6;
 
           photoWrappers.forEach((wrapper) => {
@@ -141,7 +148,11 @@ export function useHomeAnimations({
             if (!photo) return;
 
             // Measure the stationary wrapper; rotate only its image.
-            gsap.set(photo, { transformOrigin: '50% 50%', rotationX: 0, rotationY: 0 });
+            gsap.set(photo, {
+              transformOrigin: '50% 50%',
+              rotationX: 0,
+              rotationY: 0,
+            });
             const rotateX = gsap.quickTo(photo, 'rotationX', {
               duration: 0.5,
               ease: 'power3.out',
@@ -156,8 +167,16 @@ export function useHomeAnimations({
               const bounds = wrapper.getBoundingClientRect();
               if (!bounds.width || !bounds.height) return;
 
-              const x = gsap.utils.clamp(-1, 1, ((event.clientX - bounds.left) / bounds.width) * 2 - 1);
-              const y = gsap.utils.clamp(-1, 1, ((event.clientY - bounds.top) / bounds.height) * 2 - 1);
+              const x = gsap.utils.clamp(
+                -1,
+                1,
+                ((event.clientX - bounds.left) / bounds.width) * 2 - 1,
+              );
+              const y = gsap.utils.clamp(
+                -1,
+                1,
+                ((event.clientY - bounds.top) / bounds.height) * 2 - 1,
+              );
               rotateX(-y * maxTilt);
               rotateY(x * maxTilt);
             };
@@ -194,9 +213,9 @@ export function useHomeAnimations({
             trigger: intro,
             start: 'top top',
             end: '+=1000',
-            scrub: 0.4,
+            scrub: 0.8,
             pin: true,
-            // Measure this pin before the reveals below it, even when video loads later.
+
             refreshPriority: 1,
           },
         });
@@ -211,11 +230,15 @@ export function useHomeAnimations({
         // Every telemetry tween shares the video's start and duration.
         timeline.addLabel('drift');
 
-        timeline.to(video, {
-          currentTime: Math.max(0, video.duration - 0.001),
-          ease: 'none',
-          duration: driftDuration,
-        }, 'drift');
+        timeline.to(
+          video,
+          {
+            currentTime: Math.max(0, video.duration - 0.001),
+            ease: 'none',
+            duration: driftDuration,
+          },
+          'drift',
+        );
 
         if (speedElement) {
           timeline.fromTo(
@@ -310,9 +333,3 @@ export function useHomeAnimations({
     { scope: introRef },
   );
 }
-
-
-
-
-
-
