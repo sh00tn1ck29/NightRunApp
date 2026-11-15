@@ -126,7 +126,14 @@
     display: block;
     height: 1px;
     margin-top: 10px;
-    background: linear-gradient(to right, #f3f0e6 35%, #72746e 35%);
+    --scroll-progress: 0%;
+    background: linear-gradient(
+      to right,
+      #f3f0e6 0%,
+      #f3f0e6 var(--scroll-progress),
+      #72746e var(--scroll-progress),
+      #72746e 100%
+    );
   }
 
   &__telemetry {
@@ -381,5 +388,6 @@
     }
   }
 }
+
 
 
