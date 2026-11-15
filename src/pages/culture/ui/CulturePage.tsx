@@ -1,11 +1,13 @@
 import { useRef } from 'react';
 import { Header } from '../../../widgets/header';
+import { Footer } from '../../../widgets/footer';
 import { useCulturePageAnimations } from '../model/use-culture-page-animations';
 import background from '../assets/culture-night.jpg';
 import { MeaningSection } from './meaning-section/MeaningSection';
 import { TimelineSection } from './timeline-section/TimelineSection';
 import { InitialDSection } from './initial-d-section/InitialDSection';
 import { ScenesSection } from './scenes-section/ScenesSection';
+import { LegacySection } from './legacy-section/LegacySection';
 import './CulturePage.scss';
 
 export function CulturePage() {
@@ -45,7 +47,9 @@ export function CulturePage() {
       <TimelineSection />
       <InitialDSection />
       <ScenesSection />
+      <LegacySection />
       </main>
+      <Footer variant="compact" />
     </div>
   );
 }

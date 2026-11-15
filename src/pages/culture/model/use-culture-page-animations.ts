@@ -59,6 +59,18 @@ export function useCulturePageAnimations(pageRef: RefObject<HTMLDivElement | nul
           scrollTrigger: { trigger: card, start: 'top 88%', once: true },
         });
       });
+
+      const legacy = pageRef.current?.querySelector('.culture-legacy');
+      if (legacy) {
+        gsap.from(legacy.querySelectorAll('.culture-legacy__content > *'), {
+          autoAlpha: 0,
+          y: 24,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: legacy, start: 'top 75%', once: true },
+        });
+      }
     });
     return () => media.revert();
   }, { scope: pageRef });
