@@ -23,7 +23,6 @@ export type Machine = {
   imageAlt: string;
 };
 
-// Display values reproduce the supplied design; no external vehicle API.
 export const machines: readonly Machine[] = [
   { id: 'ae86', brand: 'Toyota', productionYears: '1983–1987', archiveModel: 'Sprinter Trueno GT-Apex', number: '01', name: 'AE86', model: 'Toyota Trueno', power: '128 PS', layout: 'FR', year: '1983', japanese: 'ハチロク', image: ae86Image, imageAlt: 'White Toyota AE86 in a wet car park at night' },
   { id: 'rx7', brand: 'Mazda', productionYears: '1992–2002', archiveModel: 'FD3S', number: '02', name: 'RX-7', model: 'Mazda FD3S', power: '280 PS', layout: 'FR', year: '1992', japanese: 'ロータリー', image: rx7Image, imageAlt: 'Red Mazda RX-7 FD3S' },

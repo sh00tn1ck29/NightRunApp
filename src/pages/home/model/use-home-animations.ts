@@ -57,7 +57,6 @@ export function useHomeAnimations({
         });
 
         if (origin) {
-          // Select text only: neither photo nor its figure is transformed.
           const revealElements = origin.querySelectorAll<HTMLElement>(
             [
               '.origin__section-label',
@@ -91,8 +90,6 @@ export function useHomeAnimations({
           );
 
           photos.forEach((photo) => {
-            // Create the tween now for matchMedia cleanup, but wait until both
-            // the scroll position and the lazy-loaded image are ready to play.
             const reveal = gsap.fromTo(
               photo,
               { clipPath: 'inset(0 100% 0 0)' },
@@ -116,7 +113,6 @@ export function useHomeAnimations({
             });
 
             ScrollTrigger.create({
-              // Measure the unmasked figure, not the clipped image.
               trigger: photo.closest('figure') ?? photo,
               start: 'top 85%',
               once: true,
@@ -147,7 +143,6 @@ export function useHomeAnimations({
             const photo = wrapper.querySelector('img');
             if (!photo) return;
 
-            // Measure the stationary wrapper; rotate only its image.
             gsap.set(photo, {
               transformOrigin: '50% 50%',
               rotationX: 0,
@@ -220,15 +215,20 @@ export function useHomeAnimations({
           },
         });
 
-        timeline.to(header, {
+        gsap.to(header, {
           yPercent: -100,
           autoAlpha: 0,
           ease: 'none',
-          duration: 1,
+          scrollTrigger: {
+            trigger: intro,
+            start: 'top top',
+            end: () => `+=${Math.min(header.offsetHeight, 120)}`,
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
         });
 
-        // Every telemetry tween shares the video's start and duration.
-        timeline.addLabel('drift');
+        timeline.addLabel('drift', 1);
 
         timeline.to(
           video,
@@ -302,7 +302,6 @@ export function useHomeAnimations({
           );
         }
         if (scrollLine) {
-          // Start at timeline position 0 and cover the complete pinned intro.
           timeline.fromTo(
             scrollLine,
             { '--scroll-progress': '0%' },

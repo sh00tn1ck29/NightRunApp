@@ -9,7 +9,6 @@ export function useMachineFilter() {
   const [selectedBrand, setSelectedBrand] = useState<MachineFilter>('All');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Ignore case, spaces and punctuation so both "RX-7" and "rx7" match.
   const normalize = (value: string) => value.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
   const query = normalize(searchQuery);
   const filteredMachines = machines.filter((machine) => {

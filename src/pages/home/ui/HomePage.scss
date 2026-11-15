@@ -37,7 +37,6 @@
 
   @media (max-width: 1023px) and (orientation: portrait) {
     &__background {
-      // Keep the close framing, with a little more room than full-height cover.
       top: 50%;
       bottom: auto;
       height: 74.8%;

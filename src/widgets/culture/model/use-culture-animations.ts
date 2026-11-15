@@ -42,7 +42,6 @@ export function useCultureAnimations(sectionRef: RefObject<HTMLElement | null>) 
           stagger: 0.12,
           ease: 'power2.out',
           scrollTrigger: {
-            // Measure the stationary card, not its animated children.
             trigger: card,
             start: 'top 85%',
             once: true,

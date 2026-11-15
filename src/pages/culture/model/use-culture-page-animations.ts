@@ -27,7 +27,6 @@ export function useCulturePageAnimations(pageRef: RefObject<HTMLDivElement | nul
 
       const timelineRows = pageRef.current?.querySelectorAll<HTMLElement>('.culture-timeline__item');
       timelineRows?.forEach((row) => {
-        // Animate the contents so the row's CSS hover transform stays independent.
         gsap.from(row.children, {
           autoAlpha: 0,
           y: 24,
