@@ -201,7 +201,7 @@ export function useHomeAnimations({
         }
 
         video.pause();
-        video.currentTime = 0;
+        video.currentTime = Math.min(0.001, video.duration / 2);
 
         const timeline = gsap.timeline({
           scrollTrigger: {

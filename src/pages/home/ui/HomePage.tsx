@@ -24,11 +24,12 @@ export function HomePage() {
           muted
           playsInline
           preload="auto"
+          poster={`${import.meta.env.BASE_URL}videos/touge-poster.jpg`}
           aria-hidden="true"
           tabIndex={-1}
         >
           <source
-            src={`${import.meta.env.BASE_URL}videos/touge-scroll.mp4`}
+            src={`${import.meta.env.BASE_URL}videos/touge-scroll.mp4#t=0.001`}
             type="video/mp4"
           />
         </video>
