@@ -1,4 +1,4 @@
-﻿.headline {
+.headline {
   position: relative;
   flex: 1;
   min-height: 640px;
@@ -187,13 +187,32 @@
   }
 
   &__rpm-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    flex-shrink: 0;
     width: 45px;
-    height: 5px;
-    border-right: 3px solid #ff513b;
-    background: repeating-linear-gradient(to right, #f3f0e6 0 3px, transparent 3px 6px);
+    height: 24px;
+  }
+
+  &__rpm-bar {
+    display: block;
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    background-color: #f3f0e6;
+    transform: scaleY(0.1);
+    transform-origin: center bottom;
+
+    &:last-child {
+      background-color: #ff513b;
+    }
   }
 
   &__dial {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -205,6 +224,11 @@
     border-radius: 50% 50% 0 0;
 
     strong {
+      position: relative;
+      z-index: 2;
+      width: 3ch;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
       font-family: var(--font-primary);
       font-size: 22px;
       font-style: italic;
@@ -212,10 +236,25 @@
     }
 
     .headline__label {
+      position: relative;
+      z-index: 2;
       font-size: 6px;
     }
   }
 
+  &__dial-needle {
+    position: absolute;
+    z-index: 1;
+    bottom: 8px;
+    left: 50%;
+    width: 2px;
+    height: 58%;
+    border-radius: 2px;
+    background-color: #ff513b;
+    pointer-events: none;
+    transform: translateX(-50%) rotate(-65deg);
+    transform-origin: center bottom;
+  }
   &__sector {
     margin: 0;
     color: #858783;
@@ -224,6 +263,58 @@
 
     span {
       color: #e9b83e;
+    }
+  }
+
+  @media (min-width: 768px) {
+    &__telemetry {
+      gap: 24px;
+      padding: 22px 28px;
+    }
+
+    &__telemetry-caption,
+    &__label,
+    &__unit,
+  &__sector {
+      font-size: 9px;
+    }
+
+    &__telemetry-caption {
+      top: -20px;
+    }
+
+    &__value {
+      font-size: 52px;
+
+      &--accent {
+        font-size: 42px;
+      }
+    }
+
+    &__speed {
+      padding-right: 24px;
+    }
+
+    &__rpm {
+      gap: 20px;
+    }
+
+    &__rpm-bars {
+      width: 58px;
+      height: 32px;
+    }
+
+    &__dial {
+      width: 76px;
+      height: 62px;
+
+      strong {
+        font-size: 28px;
+      }
+
+      .headline__label {
+        font-size: 8px;
+      }
     }
   }
 
@@ -275,7 +366,7 @@
     }
 
     &__rpm-bars,
-    &__sector {
+  &__sector {
       display: none;
     }
 
@@ -290,3 +381,5 @@
     }
   }
 }
+
+

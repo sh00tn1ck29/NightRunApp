@@ -65,9 +65,19 @@ export function Headline() {
           </div>
         </div>
         <div className="headline__rpm">
-          <span className="headline__rpm-bars" aria-hidden="true" />
+          <span className="headline__rpm-bars" aria-hidden="true">
+            {Array.from({ length: 8 }, (_, index) => (
+              <span className="headline__rpm-bar" data-speed-bar key={index} />
+            ))}
+          </span>
           <div className="headline__dial">
-            <strong>3.1</strong>
+            <span
+              className="headline__dial-needle"
+              data-rpm-needle
+              aria-hidden="true"
+            />
+
+            <strong data-rpm>3.1</strong>
             <span className="headline__label">RPM × 1000</span>
           </div>
         </div>

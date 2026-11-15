@@ -1,4 +1,4 @@
-﻿import { Header } from '../../../widgets/header';
+import { Header } from '../../../widgets/header';
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -18,9 +18,34 @@ export function HomePage() {
       const intro = introRef.current;
       const header = headerRef.current;
       const video = videoRef.current;
-      const speedElement = intro.querySelector<HTMLElement>('[data-speed]');
 
       if (!intro || !header || !video || !contextSafe) return;
+
+      const speedElement = intro.querySelector<HTMLElement>('[data-speed]');
+      const rpmElement = intro.querySelector<HTMLElement>('[data-rpm]');
+      const speedBars = intro.querySelectorAll<HTMLElement>('[data-speed-bar]');
+      const rpmNeedle = intro.querySelector<HTMLElement>('[data-rpm-needle]');
+      const driftDuration = 11;
+      const entrance = gsap.matchMedia();
+
+      entrance.add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.header__inner > *', {
+          autoAlpha: 0,
+          y: -16,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power2.out',
+        });
+
+        gsap.from('.headline > *', {
+          autoAlpha: 0,
+          y: '+=24',
+          duration: 1,
+          stagger: 0.12,
+          delay: 0.2,
+          ease: 'power2.out',
+        });
+      });
 
       const createAnimation = contextSafe(() => {
         if (!Number.isFinite(video.duration) || video.duration <= 0) {
@@ -47,11 +72,14 @@ export function HomePage() {
           duration: 1,
         });
 
+        // Every telemetry tween shares the video's start and duration.
+        timeline.addLabel('drift');
+
         timeline.to(video, {
           currentTime: Math.max(0, video.duration - 0.001),
           ease: 'none',
-          duration: 11,
-        });
+          duration: driftDuration,
+        }, 'drift');
 
         if (speedElement) {
           timeline.fromTo(
@@ -59,17 +87,61 @@ export function HomePage() {
             { textContent: 72 },
             {
               textContent: 140,
-              duration: 11,
+              duration: driftDuration,
               ease: 'none',
               modifiers: {
                 textContent: (value) =>
                   String(Math.round(Number(value))).padStart(3, '0'),
               },
             },
-            '<',
+            'drift',
           );
         }
 
+        if (rpmElement) {
+          timeline.fromTo(
+            rpmElement,
+            { textContent: 3.1 },
+            {
+              textContent: 8.6,
+              duration: driftDuration,
+              ease: 'none',
+              modifiers: {
+                textContent: (value) =>
+                  String(Number(value).toFixed(1)).padStart(3, '0'),
+              },
+            },
+            'drift',
+          );
+        }
+
+        if (speedBars.length > 0) {
+          timeline.fromTo(
+            speedBars,
+            { scaleY: 0.1 },
+            {
+              scaleY: (index) => 0.25 + index * 0.1,
+              transformOrigin: 'center bottom',
+              duration: driftDuration,
+              ease: 'none',
+            },
+            'drift',
+          );
+        }
+
+        if (rpmNeedle) {
+          timeline.fromTo(
+            rpmNeedle,
+            { rotation: -65 },
+            {
+              rotation: 65,
+              transformOrigin: 'center bottom',
+              duration: driftDuration,
+              ease: 'none',
+            },
+            'drift',
+          );
+        }
         ScrollTrigger.refresh();
       });
 
@@ -82,6 +154,7 @@ export function HomePage() {
       }
 
       return () => {
+        entrance.revert();
         video.removeEventListener('loadedmetadata', createAnimation);
       };
     },
@@ -115,3 +188,4 @@ export function HomePage() {
     </div>
   );
 }
+
