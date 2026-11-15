@@ -63,3 +63,32 @@
     }
   }
 }
+
+.home-page {
+  &__loader { position: absolute; z-index: 5; inset: 0; display: grid; place-items: center; padding: 32px 24px 80px; color: #f3efe5; background: radial-gradient(ellipse at 85% 20%, rgba(255,81,59,.09), transparent 60%), repeating-linear-gradient(112deg, transparent 0 100px, rgba(243,239,229,.025) 100px 101px), #090d0f; transition: opacity .65s ease, visibility .65s; }
+  &__loader--ready { opacity: 0; visibility: hidden; pointer-events: none; }
+  &__loader-content { width: min(100%, 360px); }
+  &__loader-code { margin: 0 0 32px; color: #ff513b; font: 400 9px/1.5 var(--font-technical); letter-spacing: 2px; text-transform: uppercase; }
+  &__loader-brand { display: flex; align-items: center; gap: 14px; font: 800 20px/.9 var(--font-primary); text-transform: uppercase; }
+  &__loader-mark { display: grid; place-items: center; width: 48px; height: 48px; background: #ff513b; transform: skew(-10deg); font: italic 800 24px/1 var(--font-primary); letter-spacing: -2px; }
+  &__loader-title { margin: 36px 0 32px; font: italic 800 clamp(56px, 10vw, 80px)/.85 var(--font-primary); text-transform: uppercase; letter-spacing: -.035em; }
+  &__loader-title > span { color: transparent; -webkit-text-stroke: 1px #f3efe5; }
+  &__loader-track { height: 2px; overflow: hidden; background: #303335; }
+  &__loader-track > span { display: block; width: 35%; height: 100%; background: #ff513b; animation: night-signal 1.5s ease-in-out infinite; }
+  &__loader-track--error > span { animation: none; }
+  &__loader-status { display: block; margin: 16px 0 0; color: #aba79b; font: 400 9px/1.6 var(--font-technical); letter-spacing: 1px; text-transform: uppercase; }
+  &__loader-retry { display: flex; align-items: center; gap: 24px; min-height: 44px; margin-top: 20px; padding: 12px 18px; border: 1px solid #ff513b; color: #f3efe5; background: transparent; font: 400 10px/1.5 var(--font-technical); text-transform: uppercase; cursor: pointer; }
+  &__loader-retry:hover { background: #ff513b; }
+  &__loader-retry:focus-visible { outline: 2px solid #f3efe5; outline-offset: 4px; }
+  &__loader-caption { position: absolute; bottom: 28px; left: 24px; color: #777970; font: 400 8px/1.6 var(--font-technical); letter-spacing: 1px; text-transform: uppercase; }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__loader { transition: none; }
+    &__loader-track > span { animation: none; }
+  }
+}
+
+@keyframes night-signal {
+  0% { transform: translateX(-110%); }
+  100% { transform: translateX(390%); }
+}
