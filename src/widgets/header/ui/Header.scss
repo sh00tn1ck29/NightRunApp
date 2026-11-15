@@ -141,3 +141,16 @@
     }
   }
 }
+
+.header--archive {
+  .header__inner { min-height: 85px; }
+  .header__link { position: relative; gap: 0; font-size: 11px; font-weight: 400; letter-spacing: 1px; }
+  .header__number { display: none; }
+  .header__link--active::after { position: absolute; content: ''; height: 2px; background: #ff513b; bottom: 4px; inset-inline: 0; }
+  .header__status { display: flex; align-items: center; justify-self: end; gap: 9px; margin: 0; color: #aaa59b; font: 400 8px/1.5 var(--font-technical); letter-spacing: 1px; text-transform: uppercase; }
+  .header__status > span { width: 5px; height: 5px; border-radius: 50%; background: #ff513b; box-shadow: 0 0 10px rgba(255, 81, 59, 0.4); }
+
+  @media (max-width: 767px) {
+    .header__inner { min-height: 130px; }
+  }
+}

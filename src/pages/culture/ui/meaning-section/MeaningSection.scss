@@ -1,0 +1,44 @@
+.meaning {
+  padding-block: 124px 144px;
+  background: #f3efe5;
+  color: #141719;
+
+  &__container { width: min(88%, 1680px); margin-inline: auto; }
+  &__section-label { display: flex; align-items: center; gap: 22px; margin: 0; color: #85847e; font: 400 9px/1.5 var(--font-technical); letter-spacing: 1.5px; text-transform: uppercase; }
+  &__section-number { color: #ff513b; }
+  &__section-rule { width: 60px; height: 1px; background: #c8c6bf; }
+
+  &__layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 7%; margin-top: 82px; align-items: start; }
+  &__title { margin: 0; font: italic 800 clamp(80px, 8.8vw, 170px)/0.76 var(--font-primary); letter-spacing: -0.055em; text-transform: uppercase; }
+  &__title > span { display: block; white-space: nowrap; }
+  &__title-outline { color: transparent; -webkit-text-stroke: 1.5px #141719; }
+
+  &__content { padding-top: 8px; }
+  &__lead { margin: 0; font: 700 clamp(24px, 1.8vw, 30px)/1.15 var(--font-primary); }
+  &__lead strong { font-weight: 800; }
+  &__description { margin: 4px 0 0; color: #65645f; font: 400 18px/1.48 var(--font-primary); }
+
+  &__terms { margin: 48px 0 0; padding: 0; list-style: none; border-top: 1px solid #c8c6bf; }
+  &__terms li { padding-block: 14px; border-bottom: 1px solid #d8d5cc; font: 400 9px/1.5 var(--font-technical); letter-spacing: 0.6px; text-transform: uppercase; }
+
+  @media (max-width: 1100px) {
+    padding-block: 90px 100px;
+    &__layout { grid-template-columns: 1.2fr 1fr; gap: 5%; margin-top: 64px; }
+    &__title { font-size: 8vw; }
+    &__description { font-size: 17px; }
+  }
+
+  @media (max-width: 767px) {
+    padding-block: 64px;
+    &__container { width: calc(100% - 40px); }
+    &__section-label { gap: 14px; font-size: 8px; letter-spacing: 1px; }
+    &__section-rule { width: 40px; }
+    &__layout { grid-template-columns: minmax(0, 1fr); gap: 40px; margin-top: 48px; }
+    &__title { font-size: clamp(64px, 14vw, 104px); }
+    &__title-outline { -webkit-text-stroke-width: 1px; }
+    &__content { padding-top: 0; }
+    &__lead { font-size: 26px; }
+    &__description { margin-top: 12px; font-size: 18px; }
+    &__terms { margin-top: 32px; }
+  }
+}

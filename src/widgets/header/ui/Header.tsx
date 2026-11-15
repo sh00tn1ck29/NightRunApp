@@ -7,9 +7,13 @@ const navigation = [
   { to: '/culture', label: 'Culture', number: '03' },
 ];
 
-export function Header() {
+type HeaderProps = {
+  variant?: 'default' | 'archive';
+};
+
+export function Header({ variant = 'default' }: HeaderProps) {
   return (
-    <header className="header">
+    <header className={`header${variant === 'archive' ? ' header--archive' : ''}`}>
       <div className="header__inner">
         <Link className="header__brand" to="/" aria-label="Touge Spirit — главная">
           <span className="header__mark" aria-hidden="true">TS</span>
@@ -23,7 +27,7 @@ export function Header() {
             {navigation.map(({ to, label, number }) => (
               <li className="header__item" key={to}>
                 <NavLink
-                  className="header__link"
+                  className={({ isActive }) => `header__link${isActive ? ' header__link--active' : ''}`}
                   to={to}
                   end={to === '/'}
                 >
@@ -35,10 +39,12 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="header__location">
+        {variant === 'archive' ? (
+          <p className="header__status"><span aria-hidden="true" />Archive online</p>
+        ) : <div className="header__location">
           <span className="header__region"><span lang="ja">群馬県</span> / JP</span>
           <span className="header__coordinates">36.5608° N</span>
-        </div>
+        </div>}
       </div>
     </header>
   );

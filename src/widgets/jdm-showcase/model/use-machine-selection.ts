@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation, useSearchParams } from 'react-router';
-import { defaultMachineId, machines } from '../config/machines';
-import type { MachineId } from '../config/machines';
+import { defaultMachineId, machines, type MachineId } from '../../../entities/machine';
 
 export function useMachineSelection() {
   const [searchParams, setSearchParams] = useSearchParams();

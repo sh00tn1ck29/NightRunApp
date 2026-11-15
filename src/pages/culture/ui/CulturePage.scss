@@ -1,0 +1,45 @@
+.culture-page {
+  background: #101315;
+  color: #f3efe5;
+
+  &__intro { position: relative; isolation: isolate; min-height: 100svh; overflow: clip; }
+  &__background { position: absolute; z-index: -2; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 52%; }
+  &__intro::before { position: absolute; z-index: -1; content: ''; inset: 0; background: linear-gradient(180deg, rgba(6,9,11,0.5), rgba(6,9,11,0.36) 45%, rgba(6,9,11,0.88)); pointer-events: none; }
+
+  &__hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: min(88%, 1680px);
+    min-height: calc(100svh - 85px);
+    margin-inline: auto;
+    padding-block: clamp(150px, 29vh, 280px) 72px;
+  }
+
+  &__edition { position: absolute; top: 48px; right: 0; display: flex; align-items: center; gap: 24px; color: #b0ada5; font: 700 8px/1.7 var(--font-technical); text-transform: uppercase; }
+  &__edition > span:last-child { padding-left: 16px; border-left: 1px solid rgba(243,239,229,0.3); }
+  &__number { color: rgba(243,239,229,0.3); font: italic 800 72px/1 var(--font-primary); letter-spacing: -0.05em; }
+
+  &__eyebrow { margin: 0 0 40px; color: #ff513b; font: 700 9px/1.5 var(--font-technical); letter-spacing: 1.5px; text-transform: uppercase; }
+  &__title { margin: 0; font: italic 800 clamp(140px, 14vw, 260px)/0.72 var(--font-primary); letter-spacing: -0.065em; text-transform: uppercase; }
+  &__title > span { display: block; }
+  &__title-outline { margin-left: 10%; color: transparent; -webkit-text-stroke: 1.5px #f3efe5; }
+
+  &__summary { display: flex; justify-content: flex-end; gap: 20px; margin-top: 48px; }
+  &__japanese { flex-shrink: 0; writing-mode: vertical-rl; padding-right: 20px; border-right: 2px solid #ff513b; font: 700 10px/1.3 var(--font-japanese); letter-spacing: 2px; }
+  &__description { width: min(100%, 450px); margin: 0; color: #b9b5ab; font: 400 18px/1.4 var(--font-primary); }
+
+  @media (max-width: 767px) {
+    &__hero { width: calc(100% - 40px); min-height: calc(100svh - 130px); padding-block: 180px 48px; }
+    &__background { object-position: 45% 54%; }
+    &__edition { top: 24px; gap: 12px; }
+    &__number { font-size: 52px; }
+    &__eyebrow { margin-bottom: 32px; font-size: 8px; letter-spacing: 1px; }
+    &__title { font-size: clamp(90px, 20vw, 150px); }
+    &__title-outline { margin-left: 4%; -webkit-text-stroke-width: 1px; }
+    &__summary { justify-content: flex-start; margin-top: 48px; gap: 16px; }
+    &__description { font-size: 17px; }
+    &__japanese { padding-right: 14px; }
+  }
+}

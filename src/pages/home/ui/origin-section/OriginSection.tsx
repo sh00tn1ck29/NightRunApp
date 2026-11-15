@@ -37,26 +37,30 @@ export function OriginSection() {
           </div>
 
           <figure className="origin__landscape">
-            <img
-              src={landscape}
-              alt="Forested mountain ridges disappearing into low clouds in Japan"
-              width="1600"
-              height="1000"
-              loading="eager"
-              decoding="async"
-            />
+            <div className="origin__photo-tilt" data-origin-tilt>
+              <img
+                src={landscape}
+                alt="Forested mountain ridges disappearing into low clouds in Japan"
+                width="1600"
+                height="1000"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
             <figcaption>Night run / Gunma, 1996</figcaption>
           </figure>
 
           <figure className="origin__night-photo">
-            <img
-              src={nightDrive}
-              alt="Red car taillights glowing on a dark road"
-              width="480"
-              height="640"
-              loading="eager"
-              decoding="async"
-            />
+            <div className="origin__photo-tilt" data-origin-tilt>
+              <img
+                src={nightDrive}
+                alt="Red car taillights glowing on a dark road"
+                width="480"
+                height="640"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
           </figure>
 
           <p className="origin__margin-note" aria-hidden="true">
@@ -79,5 +83,6 @@ export function OriginSection() {
     </section>
   );
 }
+
 
 

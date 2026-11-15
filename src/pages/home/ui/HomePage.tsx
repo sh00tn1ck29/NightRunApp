@@ -1,4 +1,6 @@
 import { JdmShowcase } from '../../../widgets/jdm-showcase';
+import { CultureSection } from '../../../widgets/culture';
+import { Footer } from '../../../widgets/footer';
 import { Header } from '../../../widgets/header';
 import { useRef } from 'react';
 import { Headline } from '../../../widgets/headline';
@@ -39,6 +41,8 @@ export function HomePage() {
       </div>
       <OriginSection />
       <JdmShowcase />
+      <CultureSection />
+      <Footer />
     </div>
   );
 }

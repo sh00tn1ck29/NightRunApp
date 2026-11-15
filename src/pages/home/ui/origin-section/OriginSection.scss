@@ -108,6 +108,10 @@
     > span:last-child { color: #e9b83e; }
   }
 
+  &__photo-tilt {
+    perspective: 1000px;
+  }
+
   &__landscape {
     grid-column: 4 / 11;
     grid-row: 2;
@@ -229,3 +233,4 @@
     &__ribbon-group i { width: 12px; height: 12px; }
   }
 }
+

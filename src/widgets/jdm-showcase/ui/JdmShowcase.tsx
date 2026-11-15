@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { machines } from '../config/machines';
+import { machines } from '../../../entities/machine';
 import { useMachineSelection } from '../model/use-machine-selection';
 import { MachineCard } from './MachineCard';
 import './JdmShowcase.scss';
