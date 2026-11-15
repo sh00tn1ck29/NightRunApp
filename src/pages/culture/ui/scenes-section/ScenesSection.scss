@@ -1,0 +1,61 @@
+.culture-scenes {
+  padding-block: 140px 150px;
+  background: #141719;
+  color: #f3efe5;
+
+  &__container { width: min(88%, 1680px); margin-inline: auto; }
+  &__heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 76px; }
+  &__section-label { display: flex; align-items: center; gap: 20px; flex-shrink: 0; margin: 0 0 4px; color: #a09b91; font: 400 9px/1.5 var(--font-technical); letter-spacing: 1.2px; text-transform: uppercase; }
+  &__section-number { color: #ff513b; }
+  &__section-rule { width: 60px; height: 1px; background: #414343; }
+  &__title { margin: 0; text-align: right; font: italic 800 clamp(64px, 7.2vw, 138px)/0.78 var(--font-primary); letter-spacing: -0.045em; text-transform: uppercase; }
+  &__title > span { display: block; }
+
+  &__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 80px 24px; padding-bottom: 110px; align-items: start; }
+  &__card { min-width: 0; }
+  &__card--touge { grid-column: 1 / 8; }
+  &__card--expressway { grid-column: 8 / -1; position: relative; top: 110px; }
+  &__card--tuning { grid-column: 1 / 6; }
+  &__card--media { grid-column: 6 / -1; position: relative; top: 110px; }
+  &__image-wrap { position: relative; aspect-ratio: 1.85; overflow: hidden; border-bottom: 3px solid #f3efe5; background: #0b0d0e; }
+  &__card--expressway &__image-wrap, &__card--tuning &__image-wrap { aspect-ratio: 1.32; }
+  &__image { display: block; width: 100%; height: 100%; object-fit: cover; }
+  &__card--touge &__image { filter: brightness(0.72) saturate(0.6) contrast(1.08); }
+  &__card--media &__image { object-position: center; filter: brightness(0.8) saturate(0.75); }
+  &__japanese { position: absolute; top: 20px; right: 18px; writing-mode: vertical-rl; font: 700 12px/1.4 var(--font-japanese); letter-spacing: 3px; text-shadow: 0 1px 6px #000; }
+  &__body { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 18px; padding-top: 26px; }
+  &__number { color: #ff513b; font: 700 8px/1.5 var(--font-technical); }
+  &__eyebrow { margin: 4px 0 14px; color: #969188; font: 400 8px/1.5 var(--font-technical); letter-spacing: 0.5px; text-transform: uppercase; }
+  &__name { margin: 0; font: italic 800 38px/1 var(--font-primary); text-transform: uppercase; }
+  &__description { max-width: 550px; margin: 12px 0 0; color: #aaa397; font: 400 16px/1.5 var(--font-primary); }
+  &__credit { display: inline-block; margin-top: 16px; color: #969188; font: 400 8px/1.5 var(--font-technical); text-underline-offset: 3px; }
+
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    &__image { transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1); }
+    &__image-wrap:hover &__image { transform: scale(1.04); }
+  }
+
+  @media (max-width: 1100px) {
+    padding-block: 96px;
+    &__heading { display: block; }
+    &__title { margin-top: 44px; }
+    &__grid { gap: 56px 24px; }
+    &__card--touge, &__card--tuning { grid-column: 1 / 7; }
+    &__card--expressway, &__card--media { grid-column: 7 / -1; }
+    &__image-wrap, &__card--expressway &__image-wrap, &__card--tuning &__image-wrap { aspect-ratio: 1.5; }
+  }
+
+  @media (max-width: 767px) {
+    padding-block: 64px;
+    &__container { width: calc(100% - 40px); }
+    &__heading { margin-bottom: 40px; }
+    &__section-label { gap: 14px; font-size: 8px; }
+    &__section-rule { width: 40px; }
+    &__title { font-size: clamp(44px, 10vw, 76px); }
+    &__grid { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-bottom: 0; }
+    &__card--touge, &__card--expressway, &__card--tuning, &__card--media { grid-column: 1; top: 0; }
+    &__body { gap: 12px; padding-top: 22px; }
+    &__name { font-size: 34px; }
+    &__description { font-size: 18px; }
+  }
+}
