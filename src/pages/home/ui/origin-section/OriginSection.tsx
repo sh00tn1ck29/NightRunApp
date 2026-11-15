@@ -42,7 +42,7 @@ export function OriginSection() {
               alt="Forested mountain ridges disappearing into low clouds in Japan"
               width="1600"
               height="1000"
-              loading="lazy"
+              loading="eager"
               decoding="async"
             />
             <figcaption>Night run / Gunma, 1996</figcaption>
@@ -54,7 +54,7 @@ export function OriginSection() {
               alt="Red car taillights glowing on a dark road"
               width="480"
               height="640"
-              loading="lazy"
+              loading="eager"
               decoding="async"
             />
           </figure>
@@ -79,4 +79,5 @@ export function OriginSection() {
     </section>
   );
 }
+
 

@@ -1,3 +1,4 @@
+import { JdmShowcase } from '../../../widgets/jdm-showcase';
 import { Header } from '../../../widgets/header';
 import { useRef } from 'react';
 import { Headline } from '../../../widgets/headline';
@@ -37,9 +38,11 @@ export function HomePage() {
         </main>
       </div>
       <OriginSection />
+      <JdmShowcase />
     </div>
   );
 }
+
 
 
 

@@ -110,7 +110,8 @@ export function useHomeAnimations({
             });
 
             ScrollTrigger.create({
-              trigger: photo,
+              // Measure the unmasked figure, not the clipped image.
+              trigger: photo.closest('figure') ?? photo,
               start: 'top 85%',
               once: true,
               onEnter: () => {
@@ -255,6 +256,7 @@ export function useHomeAnimations({
     { scope: introRef },
   );
 }
+
 
 
 
