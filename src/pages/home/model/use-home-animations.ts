@@ -29,10 +29,12 @@ export function useHomeAnimations({
       const speedBars = intro.querySelectorAll<HTMLElement>('[data-speed-bar]');
       const rpmNeedle = intro.querySelector<HTMLElement>('[data-rpm-needle]');
       const scrollLine = intro.querySelector<HTMLElement>('.headline__scroll-line');
+      const origin = intro.closest('.home-page')?.querySelector<HTMLElement>('.origin');
       const driftDuration = 11;
       const entrance = gsap.matchMedia();
 
       entrance.add('(prefers-reduced-motion: no-preference)', () => {
+        const photoCleanups: Array<() => void> = [];
         gsap.from('.header__inner > *', {
           autoAlpha: 0,
           y: -16,
@@ -49,6 +51,79 @@ export function useHomeAnimations({
           delay: 0.2,
           ease: 'power2.out',
         });
+
+        if (origin) {
+          // Select text only: neither photo nor its figure is transformed.
+          const revealElements = origin.querySelectorAll<HTMLElement>([
+            '.origin__section-label',
+            '.origin__eyebrow',
+            '.origin__title > span',
+            '.origin__lead',
+            '.origin__description',
+            '.origin__coordinates',
+            '.origin__landscape figcaption',
+            '.origin__margin-note',
+            '.origin__ribbon-track',
+          ].join(', '));
+
+          revealElements.forEach((element) => {
+            gsap.from(element, {
+              autoAlpha: 0,
+              y: '+=24',
+              duration: 0.9,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: element,
+                start: 'top 88%',
+                once: true,
+              },
+            });
+          });
+
+          const photos = origin.querySelectorAll<HTMLImageElement>(
+            '.origin__landscape img, .origin__night-photo img',
+          );
+
+          photos.forEach((photo) => {
+            // Create the tween now for matchMedia cleanup, but wait until both
+            // the scroll position and the lazy-loaded image are ready to play.
+            const reveal = gsap.fromTo(
+              photo,
+              { clipPath: 'inset(0 100% 0 0)' },
+              {
+                clipPath: 'inset(0 0% 0 0)',
+                duration: 1.4,
+                ease: 'power3.inOut',
+                paused: true,
+              },
+            );
+            let entered = false;
+            const revealWhenReady = () => {
+              if (entered && photo.complete && photo.naturalWidth > 0) {
+                reveal.play();
+              }
+            };
+
+            photo.addEventListener('load', revealWhenReady);
+            photoCleanups.push(() => {
+              photo.removeEventListener('load', revealWhenReady);
+            });
+
+            ScrollTrigger.create({
+              trigger: photo,
+              start: 'top 85%',
+              once: true,
+              onEnter: () => {
+                entered = true;
+                revealWhenReady();
+              },
+            });
+          });
+        }
+
+        return () => {
+          photoCleanups.forEach((cleanup) => cleanup());
+        };
       });
 
       const createAnimation = contextSafe(() => {
@@ -66,6 +141,8 @@ export function useHomeAnimations({
             end: '+=1000',
             scrub: 0.4,
             pin: true,
+            // Measure this pin before the reveals below it, even when video loads later.
+            refreshPriority: 1,
           },
         });
 
@@ -178,5 +255,7 @@ export function useHomeAnimations({
     { scope: introRef },
   );
 }
+
+
 
 

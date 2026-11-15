@@ -2,6 +2,7 @@ import { Header } from '../../../widgets/header';
 import { useRef } from 'react';
 import { Headline } from '../../../widgets/headline';
 import { useHomeAnimations } from '../model/use-home-animations';
+import { OriginSection } from './origin-section/OriginSection';
 import './HomePage.scss';
 
 export function HomePage() {
@@ -35,8 +36,11 @@ export function HomePage() {
           <Headline />
         </main>
       </div>
+      <OriginSection />
     </div>
   );
 }
+
+
 
 
