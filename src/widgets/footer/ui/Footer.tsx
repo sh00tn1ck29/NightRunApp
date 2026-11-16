@@ -16,7 +16,7 @@ export function Footer({ instagramUrl, variant = 'default' }: FooterProps) {
     return (
       <footer className="footer footer--compact">
         <div className="footer__container footer__compact-inner">
-          <Link className="footer__compact-brand" to="/" aria-label="Touge Spirit — главная">
+          <Link className="footer__compact-brand" to="/" aria-label="Touge Spirit - home">
             <span className="footer__mark" aria-hidden="true">TS</span>
           </Link>
           <p className="footer__compact-title">The road never ends.</p>
@@ -31,14 +31,14 @@ export function Footer({ instagramUrl, variant = 'default' }: FooterProps) {
     <footer className="footer">
       <div className="footer__container">
         <div className="footer__top">
-          <button className="footer__brand" type="button" onClick={scrollToTop} aria-label="Touge Spirit — наверх">
+          <button className="footer__brand" type="button" onClick={scrollToTop} aria-label="Touge Spirit - back to top">
             <span className="footer__mark" aria-hidden="true">TS</span>
             <span className="footer__wordmark" aria-hidden="true">Touge<br />Spirit</span>
           </button>
 
           <p className="footer__motto">Born in the mountains.<br />Driven by the night.</p>
 
-          <nav className="footer__navigation" aria-label="Навигация в футере">
+          <nav className="footer__navigation" aria-label="Footer navigation">
             {instagramUrl ? (
               <a className="footer__link" href={instagramUrl} target="_blank" rel="noreferrer">Instagram</a>
             ) : (

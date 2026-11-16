@@ -52,7 +52,7 @@ export function Headline() {
 
       <section
         className="headline__telemetry"
-        aria-label="Показатели автомобиля"
+        aria-label="Vehicle instruments"
       >
         <span className="headline__telemetry-caption">Trueno / live data</span>
         <div className="headline__speed">

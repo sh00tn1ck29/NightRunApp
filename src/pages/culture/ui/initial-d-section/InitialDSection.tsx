@@ -1,3 +1,4 @@
+import { ResponsiveImage } from '../../../../shared/ui/ResponsiveImage';
 import roadPhoto from '../../assets/initial-d-anime.jpg';
 import './InitialDSection.scss';
 
@@ -5,7 +6,7 @@ export function InitialDSection() {
   return (
     <section className="initial-d" aria-labelledby="initial-d-title">
       <figure className="initial-d__visual">
-        <img className="initial-d__image" src={roadPhoto} alt="Toyota AE86 drifting on a mountain road in Initial D Legend 1" loading="lazy" decoding="async" />
+        <ResponsiveImage className="initial-d__image" src={roadPhoto} alt="Toyota AE86 drifting on a mountain road in Initial D Legend 1" loading="lazy" decoding="async" />
         <span className="initial-d__year" aria-hidden="true">1995</span>
         <figcaption className="initial-d__location"><span lang="ja">群馬県</span> / Gunma</figcaption>
       </figure>
@@ -42,9 +43,9 @@ export function InitialDSection() {
           </p>
         </div>
 
-        <blockquote className="initial-d__quote">
-          “The ordinary car became extraordinary because the driver understood every movement.”
-        </blockquote>
+        <p className="initial-d__quote">
+          The ordinary car became extraordinary because the driver understood every movement.
+        </p>
       </div>
     </section>
   );

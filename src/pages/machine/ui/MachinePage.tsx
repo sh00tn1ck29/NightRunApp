@@ -1,3 +1,4 @@
+import { ResponsiveImage } from '../../../shared/ui/ResponsiveImage';
 import { useRef } from 'react';
 import { Link, useParams } from 'react-router';
 import { machines, machinePhotoCredits } from '../../../entities/machine';
@@ -24,12 +25,12 @@ export function MachinePage() {
     <Header variant="archive" />
     <main>
       <section className="machine-hero" aria-labelledby="machine-title">
-        <img className="machine-hero__image" src={machine.image} alt={machine.imageAlt} fetchPriority="high" />
+        <ResponsiveImage className="machine-hero__image" src={machine.image} alt={machine.imageAlt} fetchPriority="high" />
         <Link className="machine-hero__back" to="/legends">← Back to Legends</Link>
         <span className="machine-hero__number" aria-hidden="true">{machine.number}</span>
         <div className="machine-hero__content">
           <p className="machine-hero__eyebrow">{machine.brand} / {machine.productionYears}<span lang="ja">{machine.japanese}</span></p>
-          <h1 className="machine-hero__title" id="machine-title"><span>{machine.name}</span><span className="machine-hero__model">{machine.archiveModel}</span></h1>
+          <h1 className="machine-hero__title" id="machine-title"><span>{machine.name}</span>{' '}<span className="machine-hero__model">{machine.archiveModel}</span></h1>
           <p className="machine-hero__introduction">{details.introduction}</p>
         </div>
         <aside className="machine-hero__badge" aria-label={`Chassis: ${details.chassis}`}>
@@ -49,7 +50,7 @@ export function MachinePage() {
         <div className="machine-history__content">
           <p className="machine-page__label"><span>02</span><span lang="ja">物語</span> — History<i aria-hidden="true" /></p>
           <h2 id="history-title">A machine<br />becomes a<br />movement.</h2>
-          <p className="machine-history__text">{details.history}</p><blockquote>“{details.quote}”</blockquote>
+          <p className="machine-history__text">{details.history}</p><p className="machine-history__motto">{details.quote}</p>
           {details.sources && <p className="machine-history__sources">Sources: {details.sources.map((source, index) => <span key={source.url}>{index > 0 && ' · '}<a href={source.url} target="_blank" rel="noreferrer">{source.title}</a></span>)}</p>}
         </div>
       </section>

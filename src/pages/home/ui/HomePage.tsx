@@ -13,12 +13,14 @@ export function HomePage() {
   const introRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { status: videoStatus, retry } = useVideoLoading(videoRef);
+  const { status: videoStatus } = useVideoLoading(videoRef);
 
   useHomeAnimations({ introRef, headerRef, videoRef });
 
   return (
     <div className="home-page">
+      <div className="home-page__header" ref={headerRef}><Header /></div>
+      <main>
       <div className="home-page__intro" ref={introRef}>
         <video
           ref={videoRef}
@@ -26,6 +28,7 @@ export function HomePage() {
           muted
           playsInline
           preload="auto"
+          poster={`${import.meta.env.BASE_URL}videos/touge-poster.jpg`}
           aria-hidden="true"
           tabIndex={-1}
         >
@@ -34,7 +37,7 @@ export function HomePage() {
             type="video/mp4"
           />
         </video>
-        <div className={`home-page__loader${videoStatus === 'ready' ? ' home-page__loader--ready' : ''}`} aria-hidden={videoStatus === 'ready'}>
+        <div className={`home-page__loader${videoStatus !== 'loading' ? ' home-page__loader--ready' : ''}`} aria-hidden={videoStatus !== 'loading'}>
           <div className="home-page__loader-content">
             <p className="home-page__loader-code">TS–01 / Night stage</p>
             <div className="home-page__loader-brand" aria-hidden="true">
@@ -46,20 +49,17 @@ export function HomePage() {
             <output className="home-page__loader-status">
               {videoStatus === 'error' ? 'Signal lost. Try loading again.' : videoStatus === 'ready' ? 'Ready to drift.' : 'Preparing the night run'}
             </output>
-            {videoStatus === 'error' && <button className="home-page__loader-retry" type="button" onClick={retry}>Retry connection <span aria-hidden="true">↗</span></button>}
           </div>
           <span className="home-page__loader-caption" aria-hidden="true">峠の精神 / Born in the mountains.</span>
         </div>
-        <div className="home-page__header" ref={headerRef}>
-          <Header />
-        </div>
-        <main>
+        <div className="home-page__hero-content" inert={videoStatus === 'loading'}>
           <Headline />
-        </main>
+        </div>
       </div>
       <OriginSection />
       <JdmShowcase />
       <CultureSection />
+      </main>
       <Footer />
     </div>
   );

@@ -1,3 +1,5 @@
+import { ResponsiveImage } from '../../../shared/ui/ResponsiveImage';
+import { Link } from 'react-router';
 import { useRef } from 'react';
 import { useMachineTilt } from '../model/use-machine-tilt';
 import { machinePhotoCredits, type Machine } from '../../../entities/machine';
@@ -14,7 +16,7 @@ export function MachineCard({ machine }: MachineCardProps) {
     <div className="jdm-showcase__card-tilt" ref={wrapperRef}>
       <article className="jdm-showcase__card" aria-labelledby="jdm-machine-name" ref={cardRef}>
         <div className="jdm-showcase__image-wrap">
-          <img
+          <ResponsiveImage
             className={`jdm-showcase__image${machine.id === 'ae86' ? ' jdm-showcase__image--monochrome' : ''}`}
             src={machine.image}
             alt={machine.imageAlt}
@@ -34,9 +36,9 @@ export function MachineCard({ machine }: MachineCardProps) {
             <div><dt>Layout</dt><dd>{machine.layout}</dd></div>
             <div><dt>Era</dt><dd>{machine.year}</dd></div>
           </dl>
-          <button className="jdm-showcase__view" type="button" disabled>
+          <Link className="jdm-showcase__view" to={`/legends/${machine.id}`}>
             View machine <span aria-hidden="true">→</span>
-          </button>
+          </Link>
         </div>
         <span className="jdm-showcase__japanese" lang="ja" aria-hidden="true">{machine.japanese}</span>
         {credit && (

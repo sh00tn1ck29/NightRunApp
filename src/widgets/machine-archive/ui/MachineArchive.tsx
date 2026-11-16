@@ -1,3 +1,4 @@
+import { ResponsiveImage } from '../../../shared/ui/ResponsiveImage';
 import { useRef } from 'react';
 import { Link } from 'react-router';
 import { machinePhotoCredits } from '../../../entities/machine';
@@ -16,7 +17,7 @@ export function MachineArchive() {
     <section ref={sectionRef} className="machine-archive" aria-label="Machine archive">
       <div className="machine-archive__container">
         <div className="machine-archive__toolbar">
-          <fieldset className="machine-archive__filters" aria-label="Марка автомобиля">
+          <fieldset className="machine-archive__filters" aria-label="Car brand">
             {machineFilters.map((filter, index) => (
               <button
                 className={`machine-archive__filter${selectedBrand === filter ? ' machine-archive__filter--active' : ''}`}
@@ -35,7 +36,7 @@ export function MachineArchive() {
             <input
               type="search"
               placeholder="Search the archive"
-              aria-label="Поиск машины по названию"
+              aria-label="Search machines by name"
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.currentTarget.value)}
             />
@@ -58,7 +59,7 @@ export function MachineArchive() {
             return (
               <article className="machine-archive__card" key={machine.id} aria-labelledby={`archive-${machine.id}`}>
                 <div className="machine-archive__image-wrap">
-                  <img className="machine-archive__image" src={machine.image} alt={machine.imageAlt} loading="lazy" decoding="async" />
+                  <ResponsiveImage className="machine-archive__image" src={machine.image} alt={machine.imageAlt} loading="lazy" decoding="async" />
                   <span className="machine-archive__japanese" lang="ja" aria-hidden="true">{machine.japanese}</span>
                   <span className="machine-archive__number" aria-hidden="true">{machine.number}</span>
                 </div>

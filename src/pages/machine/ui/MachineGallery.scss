@@ -39,3 +39,8 @@
   from { opacity: .35; transform: scale(1.08); }
   to { opacity: 1; transform: scale(1); }
 }
+
+.machine-gallery__thumbnails { min-width: 0; margin-inline: 0; padding: 0; border: 0; }
+.machine-gallery__status { display: block; min-height: 1.5em; margin: 8px 0; font-size: 14px; }
+.machine-gallery__error { color: #f3efe5; }
+.machine-gallery__error button { color: inherit; background: transparent; border: 1px solid currentColor; padding: 8px 12px; cursor: pointer; }

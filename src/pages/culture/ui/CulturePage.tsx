@@ -1,3 +1,4 @@
+import { ResponsiveImage } from '../../../shared/ui/ResponsiveImage';
 import { useRef } from 'react';
 import { Header } from '../../../widgets/header';
 import { Footer } from '../../../widgets/footer';
@@ -16,10 +17,10 @@ export function CulturePage() {
 
   return (
     <div className="culture-page" ref={pageRef}>
+      <Header variant="archive" />
       <main>
       <div className="culture-page__intro">
-        <img className="culture-page__background" src={background} alt="" aria-hidden="true" fetchPriority="high" />
-        <Header variant="archive" />
+        <ResponsiveImage className="culture-page__background" src={background} alt="" aria-hidden="true" fetchPriority="high" />
         <section className="culture-page__hero" aria-label="JDM Culture">
           <div className="culture-page__edition" aria-label="03 — The culture behind the cars">
             <span className="culture-page__number" aria-hidden="true">03</span>

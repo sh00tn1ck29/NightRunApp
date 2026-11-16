@@ -1,3 +1,4 @@
+import { ResponsiveImage } from '../../../shared/ui/ResponsiveImage';
 import { useRef } from 'react';
 import { useCultureAnimations } from '../model/use-culture-animations';
 import driftPhoto from '../assets/drift.jpg';
@@ -67,7 +68,7 @@ export function CultureSection() {
           {stories.map((story) => (
             <article className={`culture__card culture__card--${story.id}`} key={story.id} aria-labelledby={`culture-${story.id}`}>
               <div className="culture__image-wrap">
-                <img className="culture__image" src={story.image} alt={story.alt} loading="lazy" decoding="async" />
+                <ResponsiveImage className="culture__image" src={story.image} alt={story.alt} loading="lazy" decoding="async" />
                 <span className="culture__japanese" lang="ja" aria-hidden="true">{story.japanese}</span>
               </div>
               <div className="culture__card-body">

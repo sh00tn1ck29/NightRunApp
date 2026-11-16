@@ -1,10 +1,12 @@
 .home-page {
+  position: relative;
   &__intro {
     position: relative;
     isolation: isolate;
     display: flex;
     flex-direction: column;
     min-height: 100svh;
+    padding-top: 92px;
     overflow: clip;
     background-color: #090d0f;
 
@@ -17,7 +19,7 @@
       pointer-events: none;
     }
 
-    > main {
+    > .home-page__hero-content {
       position: relative;
       z-index: 2;
       display: flex;
@@ -27,8 +29,10 @@
   }
 
   &__header {
-    position: relative;
-    z-index: 2;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 3;
   }
 
   &__background {
@@ -92,3 +96,5 @@
   0% { transform: translateX(-110%); }
   100% { transform: translateX(390%); }
 }
+
+@media (max-width: 767px) { .home-page__intro { padding-top: 130px; } }

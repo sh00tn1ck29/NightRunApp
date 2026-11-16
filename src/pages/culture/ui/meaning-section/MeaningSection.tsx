@@ -29,7 +29,7 @@ export function MeaningSection() {
               restoration purists all spoke different dialects of the same language.
             </p>
 
-            <ul className="meaning__terms" aria-label="Термины автомобильной культуры">
+            <ul className="meaning__terms" aria-label="Car culture terms">
               <li><span lang="ja">走り屋</span> / Hashiriya</li>
               <li><span lang="ja">峠</span> / Touge</li>
               <li><span lang="ja">改造</span> / Kaizō</li>

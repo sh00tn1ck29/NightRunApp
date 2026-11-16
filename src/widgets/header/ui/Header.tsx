@@ -15,14 +15,14 @@ export function Header({ variant = 'default' }: HeaderProps) {
   return (
     <header className={`header${variant === 'archive' ? ' header--archive' : ''}`}>
       <div className="header__inner">
-        <Link className="header__brand" to="/" aria-label="Touge Spirit — главная">
+        <Link className="header__brand" to="/" aria-label="Touge Spirit - home">
           <span className="header__mark" aria-hidden="true">TS</span>
           <span className="header__wordmark" aria-hidden="true">
             TOUGE<br />SPIRIT
           </span>
         </Link>
 
-        <nav className="header__nav" aria-label="Основная навигация">
+        <nav className="header__nav" aria-label="Main navigation">
           <ul className="header__list">
             {navigation.map(({ to, label, number }) => (
               <li className="header__item" key={to}>

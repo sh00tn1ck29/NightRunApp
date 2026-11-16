@@ -1,3 +1,4 @@
+import { ResponsiveImage } from '../../../../shared/ui/ResponsiveImage';
 import landscape from '../../assets/origin-landscape.jpg';
 import nightDrive from '../../assets/origin-night.jpg';
 import './OriginSection.scss';
@@ -38,7 +39,7 @@ export function OriginSection() {
 
           <figure className="origin__landscape">
             <div className="origin__photo-tilt" data-origin-tilt>
-              <img
+              <ResponsiveImage
                 src={landscape}
                 alt="Forested mountain ridges disappearing into low clouds in Japan"
                 width="1600"
@@ -52,7 +53,7 @@ export function OriginSection() {
 
           <figure className="origin__night-photo">
             <div className="origin__photo-tilt" data-origin-tilt>
-              <img
+              <ResponsiveImage
                 src={nightDrive}
                 alt="Red car taillights glowing on a dark road"
                 width="480"

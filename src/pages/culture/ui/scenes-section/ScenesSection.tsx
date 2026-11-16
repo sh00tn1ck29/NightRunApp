@@ -1,3 +1,4 @@
+import { ResponsiveImage } from '../../../../shared/ui/ResponsiveImage';
 import tougePhoto from '../../assets/scene-touge.jpg';
 import expresswayPhoto from '../../assets/scene-expressway.jpg';
 import tuningPhoto from '../../assets/scene-tuning.jpg';
@@ -31,7 +32,7 @@ export function ScenesSection() {
           {scenes.map((scene) => (
             <article className={`culture-scenes__card culture-scenes__card--${scene.id}`} key={scene.id} aria-labelledby={`scene-${scene.id}`}>
               <div className="culture-scenes__image-wrap">
-                <img className="culture-scenes__image" src={scene.image} alt={scene.alt} loading="lazy" decoding="async" />
+                <ResponsiveImage className="culture-scenes__image" src={scene.image} alt={scene.alt} loading="lazy" decoding="async" />
                 <span className="culture-scenes__japanese" lang="ja" aria-hidden="true">{scene.japanese}</span>
               </div>
               <div className="culture-scenes__body">

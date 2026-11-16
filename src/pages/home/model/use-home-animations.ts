@@ -39,7 +39,7 @@ export function useHomeAnimations({
 
       entrance.add('(prefers-reduced-motion: no-preference)', () => {
         const photoCleanups: Array<() => void> = [];
-        gsap.from('.header__inner > *', {
+        gsap.from(header.querySelectorAll('.header__inner > *'), {
           autoAlpha: 0,
           y: -16,
           duration: 0.8,
@@ -195,7 +195,9 @@ export function useHomeAnimations({
           return () => cleanups.forEach((cleanup) => cleanup());
         },
       );
-      const createAnimation = contextSafe(() => {
+      entrance.add('(prefers-reduced-motion: no-preference)', () => {
+      const videoContext = gsap.context(() => {});
+      const createAnimation = () => videoContext.add(() => {
         if (!Number.isFinite(video.duration) || video.duration <= 0) {
           return;
         }
@@ -325,8 +327,14 @@ export function useHomeAnimations({
       }
 
       return () => {
-        entrance.revert();
         video.removeEventListener('loadedmetadata', createAnimation);
+        videoContext.revert();
+      };
+      });
+
+      return () => {
+        entrance.revert();
+
       };
     },
     { scope: introRef },

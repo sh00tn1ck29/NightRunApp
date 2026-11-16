@@ -1,10 +1,11 @@
+import { ResponsiveImage } from '../../../shared/ui/ResponsiveImage';
 import { Link } from 'react-router';
-import { machines, type MachineId } from '../../../entities/machine';
-import { machineDetails } from '../model/machine-details';
+import { type MachineId } from '../../../entities/machine';
+import { relatedMachines } from '../model/related-machines';
 import './RelatedMachines.scss';
 
 export function RelatedMachines({ currentId }: { currentId: MachineId }) {
-  const related = machines.filter(({ id }) => id !== currentId).slice(0, 3);
+  const related = relatedMachines(currentId);
   const titles: Partial<Record<MachineId, string>> = { r34: 'Skyline GT-R', a80: 'Supra' };
 
   return <section className="related-machines" aria-labelledby="related-title">
@@ -17,10 +18,10 @@ export function RelatedMachines({ currentId }: { currentId: MachineId }) {
         {related.map((machine) => <Link
           key={machine.id}
           className="related-machines__card"
-          to={machineDetails[machine.id] ? `/legends/${machine.id}` : '/legends'}
+          to={`/legends/${machine.id}`}
           aria-label={`Explore ${machine.brand} ${titles[machine.id] ?? machine.name}`}
         >
-          <img className="related-machines__image" src={machine.image} alt={machine.imageAlt} loading="lazy" decoding="async" />
+          <ResponsiveImage className="related-machines__image" src={machine.image} sizes="(max-width: 767px) 90vw, 28vw" alt={machine.imageAlt} loading="lazy" decoding="async" />
           <span className="related-machines__japanese" lang="ja" aria-hidden="true">{machine.japanese}</span>
           <div className="related-machines__details">
             <p>{machine.brand}</p>
