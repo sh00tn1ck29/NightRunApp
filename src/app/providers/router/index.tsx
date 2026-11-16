@@ -2,6 +2,7 @@ import { useLayoutEffect } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router';
 import { HomePage } from '../../../pages/home';
 import { LegendsPage } from '../../../pages/legends';
+import { MachinePage } from '../../../pages/machine';
 import { CulturePage } from '../../../pages/culture';
 import { NotFoundPage } from '../../../pages/not-found';
 
@@ -22,6 +23,7 @@ export function AppRouter() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/legends" element={<LegendsPage />} />
+        <Route path="/legends/:machineId" element={<MachinePage />} />
         <Route path="/culture" element={<CulturePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router';
 import { machinePhotoCredits } from '../../../entities/machine';
 import { useArchiveAnimations } from '../model/use-archive-animations';
 import { machineFilters, useMachineFilter } from '../model/use-machine-filter';
@@ -64,7 +65,9 @@ export function MachineArchive() {
                 <div className="machine-archive__details">
                   <div className="machine-archive__identity">
                     <p className="machine-archive__brand">{machine.brand}</p>
-                    <h2 className="machine-archive__name" id={`archive-${machine.id}`}>{machine.name}</h2>
+                    <h2 className="machine-archive__name" id={`archive-${machine.id}`}>
+                      <Link className="machine-archive__card-link" to={`/legends/${machine.id}`}>{machine.name}</Link>
+                    </h2>
                     <p className="machine-archive__model">{machine.archiveModel}</p>
                   </div>
                   <dl className="machine-archive__specs">

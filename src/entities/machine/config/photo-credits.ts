@@ -10,10 +10,10 @@ export const machinePhotoCredits: Partial<Record<MachineId, PhotoCredit>> = {
     licenseUrl: 'https://unsplash.com/license',
   },
   rx7: {
-    author: 'Mr.choppers',
-    source: 'https://commons.wikimedia.org/wiki/File:1994_Mazda_RX-7_R2_in_Vintage_Red,_front_left_(Lime_Rock).jpg',
-    license: 'CC BY-SA 3.0',
-    licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0',
+    author: 'Loris Boulinguez',
+    source: 'https://unsplash.com/photos/bJwEWrRLyhY',
+    license: 'Unsplash License',
+    licenseUrl: 'https://unsplash.com/license',
   },
   r34: {
     author: 'Timmie Ahl',

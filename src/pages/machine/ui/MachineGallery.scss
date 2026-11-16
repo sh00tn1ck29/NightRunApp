@@ -1,0 +1,41 @@
+.machine-gallery {
+  padding-block: 120px 80px;
+  background: #141719;
+  color: #f3efe5;
+
+  &__heading { display: flex; justify-content: space-between; align-items: baseline; gap: 32px; margin: 36px 0 48px; }
+  h2 { margin: 0; font: italic 800 clamp(64px, 7vw, 116px)/1 var(--font-primary); letter-spacing: -.035em; text-transform: uppercase; }
+  &__counter { flex-shrink: 0; margin: 0; color: #ff513b; font: 700 11px/1.5 var(--font-technical); letter-spacing: 1.5px; }
+  &__stage { position: relative; aspect-ratio: 1.62; overflow: hidden; background: #0b0d0e; }
+  &__image { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  &__japanese { position: absolute; top: 24px; right: 24px; padding: 12px 10px; border: 1px solid rgba(243,239,229,.4); background: rgba(8,9,9,.55); writing-mode: vertical-rl; font: 700 12px/1.5 var(--font-japanese); letter-spacing: 3px; }
+  &__thumbnails { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+  &__thumbnail { position: relative; display: block; width: 100%; aspect-ratio: 2.8; overflow: hidden; padding: 0; border: 1px solid transparent; background: #0b0d0e; cursor: pointer; }
+  &__thumbnail img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: .4; }
+  &__thumbnail span { position: absolute; left: 8px; bottom: 6px; color: #f3efe5; font: 700 8px/1 var(--font-technical); text-shadow: 0 1px 4px #000; }
+  &__thumbnail--active { border-color: #ff513b; }
+  &__thumbnail--active img, &__thumbnail:hover img { opacity: 1; }
+  &__thumbnail:focus-visible { outline: 2px solid #f3efe5; outline-offset: 3px; }
+  &__credit { margin: 14px 0 0; color: #999890; font: 400 8px/1.5 var(--font-technical); }
+  &__credit a { color: inherit; text-underline-offset: 3px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &__thumbnail img { transition: opacity 250ms ease; }
+    &__image { animation: archive-photo-in 800ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  }
+  @media (max-width: 767px) {
+    padding-block: 64px 48px;
+    &__heading { flex-wrap: wrap; gap: 16px; margin-block: 28px 30px; }
+    h2 { font-size: clamp(48px, 11vw, 76px); line-height: .95; }
+    &__counter { margin-left: auto; font-size: 9px; }
+    &__stage { aspect-ratio: 1.1; }
+    &__japanese { top: 14px; right: 14px; padding: 10px 7px; font-size: 10px; }
+    &__thumbnails { gap: 8px; margin-top: 10px; }
+    &__thumbnail { aspect-ratio: 1.25; min-height: 44px; }
+  }
+}
+
+@keyframes archive-photo-in {
+  from { opacity: .35; transform: scale(1.08); }
+  to { opacity: 1; transform: scale(1); }
+}
